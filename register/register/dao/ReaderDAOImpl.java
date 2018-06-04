@@ -72,4 +72,34 @@ public class ReaderDAOImpl implements ReaderDAO{
 		}
 		return role;
 	}
+	public void saveReader(Reader reader){
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try{
+			con=getConnection();
+			con.setAutoCommit(false);
+			stmt=con.prepareStatement("insert into reader(图书证号,登录密码,姓名,院系,班级,角色)values(?,?,?,?,?,?)");
+			stmt.setString(1,reader.get图书证号());
+			stmt.setString(2,reader.get登录密码());
+			stmt.setString(3,reader.get姓名());
+			stmt.setString(4,reader.get院系());
+			stmt.setString(5,reader.get班级());
+			stmt.setString(6,"读者");
+			stmt.execute();
+			con.commit();
+		}catch(Exception e){
+			try{
+				con.rollback();
+			}catch(SQLException sqlex){
+				sqlex.printStackTrace();
+			}
+		}finally{
+			try{
+				stmt.close();
+				con.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
 }

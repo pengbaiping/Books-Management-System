@@ -30,6 +30,7 @@ function validator()
 	<input type="reset" value="重置">
 	<input type="submit" value="登录">
 	</form>
+	<a href="AddReader.jsp">注册</a>
 		<a href="HomePage.jsp">回到首页</a>
 <body>
 </body>

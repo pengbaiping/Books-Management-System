@@ -10,6 +10,7 @@
 	<h4><center><font color="blue">${noticeBean}</font></center></h4>
 	<b><center>______________________________________________________________________________________________________</center></b>
 	<p><a href="BookList.jsp"><center>图书列表</center></a></p>
+	<p><a href="SearchBook.jsp"><center>查询图书</center></a></p>
 	<p><a href="AdminLogin.jsp"><center>管理员登录</center></a></p>
 	<p><a href="WorkerLogin.jsp"><center>工作人员登录</center></a></p>
 	<p><a href="ReaderLogin.jsp"><center>读者登录</center></a></p>

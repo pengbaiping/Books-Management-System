@@ -3,9 +3,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>添加读者</title>
+<title>读者注册</title>
 </head>
-<h1>添加新读者</h1>
+<h1>读者注册</h1>
 <body>
 	<form name="form2"method="post"action="AddReader"><table>
 	<tr>

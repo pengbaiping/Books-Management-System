@@ -1,24 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=gb2312"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page import="java.sql.*,java.io.*" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>°´Ìõ¼þ²éÑ¯Í¼Êé</title>
+<title>æŒ‰æ¡ä»¶æŸ¥è¯¢å›¾ä¹¦</title>
 </head>
 <body>
-<form action="SearchBook" method="post">
+<form>
 	<table>
 		<tr>
-		<td>ÇëÊäÈëÒª²éÑ¯µÄ×Ö¶Î</td></tr>
-		<tr><td><select name="Ìõ¼þ">
-		<option value="ÊéÃû">ÊéÃû</option>
-		<option value="×÷Õß">×÷Õß</option>
-		<option value="³ö°æÉç">³ö°æÉç</option>
-		<option value="Èë¿âÊ±¼ä">Èë¿âÊ±¼ä</option>
+		<td>è¯·è¾“å…¥è¦æŸ¥è¯¢çš„å­—æ®µ</td></tr>
+		<tr><td><select name="å­—æ®µå">
+		<option value="ä¹¦å">ä¹¦å</option>
+		<option value="ä½œè€…">ä½œè€…</option>
+		<option value="å‡ºç‰ˆç¤¾">å‡ºç‰ˆç¤¾</option>
+		<option value="å…¥åº“æ—¶é—´">å…¥åº“æ—¶é—´</option>
 	</select></td></tr>
-		<tr><td><input type="text" name="×Ö¶ÎÃû"></td></tr>
-		<tr><td><input type="submit" value="²éÕÒ"></td></tr>
+		<tr><td><input type="text" name="æ¡ä»¶"></td></tr>
+		<tr><td><input type="submit" value="æŸ¥æ‰¾"></td></tr>
 		</table>
 		   </form>
-		   <h2><font color="blue">${book}</font></h2>
+		   <table border=3>
+				<tr><td width=120><b><center>ä¹¦å·</td>
+				<td width=120><b><center>ä¹¦å</td>
+				<td width=120><b><center>ä½œè€…</td>
+				<td width=120><b><center>å‡ºç‰ˆç¤¾</td>
+				<td width=120><b><center>å…¥åº“æ—¶é—´</td>
+				<td width=120><b><center>æ˜¯å¦å€Ÿå‡º</td>
+</tr>
+<%
+String æ¡ä»¶=request.getParameter("æ¡ä»¶");
+String å­—æ®µå=request.getParameter("å­—æ®µå");
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection con=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/bms","root","1505010604");
+Statement stmt=con.createStatement();
+ResultSet rst=stmt.executeQuery("select * from book where "+å­—æ®µå+"="+æ¡ä»¶+"");
+while(rst.next()){
+	out.println("<tr>");
+	out.println("<td><center>"+rst.getString("ä¹¦å·")+"</center></td>");
+	out.println("<td><center>"+rst.getString("ä¹¦å")+"</center></td>");
+	out.println("<td><center>"+rst.getString("ä½œè€…")+"</center></td>");
+	out.println("<td><center>"+rst.getString("å‡ºç‰ˆç¤¾")+"</center></td>");
+	out.println("<td><center>"+rst.getString("å…¥åº“æ—¶é—´")+"</center></td>");
+	out.println("<td><center>"+rst.getString("æ˜¯å¦å€Ÿå‡º")+"</center></td>");
+	out.println("</tr>");
+}
+rst.close();
+stmt.close();
+con.close();
+%>
+</table>
 </body>
 </html>
