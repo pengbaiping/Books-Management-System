@@ -4,21 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改密码</title>
+<title>修改个人信息</title>
 </head>
 <body>
-<h1>修改密码</h1>
-<form name="form5" method="post" action="ChangePassword1">
+<h1>修改个人信息</h1>
+<form name="form5" method="post" action="ChangeReader">
 <table>
 	<tr>
-		<td>请输入工号：
-		<td bgcolor="blue"><input name="工号" type="text">
+		<td>请输入图书证号：
+		<td bgcolor="blue"><input name="图书证号" type="text">
 	<tr>
-		<td>请输入新密码：
-		<td bgcolor="blue"><input name="newpassword1" type="password">
+		<td>请输入姓名：
+		<td bgcolor="blue"><input name="姓名" type="text">
 	<tr>
-		<td>确认密码：
-		<td bgcolor="blue"><input name="newpassword2" type="password">
+		<td>请输入院系：
+		<td bgcolor="blue"><input name="院系" type="text">
+	<tr>
+	<tr>
+		<td>请输入班级：
+		<td bgcolor="blue"><input name="班级" type="text">
 	<tr>
 		</table><br>
 	<input type="reset" value="重置">

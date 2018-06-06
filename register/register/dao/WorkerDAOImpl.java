@@ -4,6 +4,7 @@ import java.util.*;
 import register.model.Borrow;
 import register.model.Repay;
 import register.model.Worker;
+import register.model.Reader;
 
 public class WorkerDAOImpl implements WorkerDAO{
 	private String dbClassName="com.mysql.jdbc.Driver";
@@ -155,6 +156,33 @@ public class WorkerDAOImpl implements WorkerDAO{
 			stmt=con.prepareStatement("insert into notice(工号,notices,createtime)values(?,?,CURRENT_TIMESTAMP)");
 			stmt.setString(1,worker.get工号());
 			stmt.setString(2,worker.getNotices());
+			stmt.execute();
+			con.commit();
+		}catch(Exception e){
+			try{
+				con.rollback();
+			}catch(SQLException sqlex){
+				sqlex.printStackTrace();
+			}
+		}finally{
+			try{
+				stmt.close();
+				con.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void saveReply(Reader reader) {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try{
+			con=getConnection();
+			con.setAutoCommit(false);
+			stmt=con.prepareStatement("update message set 回复=?where 图书证号="+reader.get图书证号()+"");
+			stmt.setString(1,reader.getReply());
 			stmt.execute();
 			con.commit();
 		}catch(Exception e){

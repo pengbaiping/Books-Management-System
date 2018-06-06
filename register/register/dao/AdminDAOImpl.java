@@ -131,32 +131,6 @@ public class AdminDAOImpl implements AdminDAO{
 			}
 		}
 	}
-	public void deleteWorker(String 工号){
-		Connection con=null;
-		PreparedStatement stmt=null;
-		try{
-			con=getConnection();
-			con.setAutoCommit(false);
-			stmt=con.prepareStatement("delete from worker where 工号=?");
-			stmt.setString(1,工号);
-			stmt.execute();
-			con.commit();
-		}catch(Exception e){
-			try{
-				con.rollback();
-			}catch(SQLException sqlex){
-				sqlex.printStackTrace();
-			}
-		}finally{
-			try{
-				stmt.close();
-				con.close();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-		}
-	}
-
 	@Override
 	public void saveBook(Book book) {
 		// TODO Auto-generated method stub
@@ -190,7 +164,7 @@ public class AdminDAOImpl implements AdminDAO{
 		}
 	}
 	@Override
-	public void deleteBook(String 书号) {
+	public void deleteBook(Book book) {
 		// TODO Auto-generated method stub
 		Connection con=null;
 		PreparedStatement stmt=null;
@@ -198,7 +172,93 @@ public class AdminDAOImpl implements AdminDAO{
 			con=getConnection();
 			con.setAutoCommit(false);
 			stmt=con.prepareStatement("delete from book where 书号=?");
-			stmt.setString(1,书号);
+			stmt.setString(1,book.get书号());
+			stmt.execute();
+			con.commit();
+		}catch(Exception e){
+			try{
+				con.rollback();
+			}catch(SQLException sqlex){
+				sqlex.printStackTrace();
+			}
+		}finally{
+			try{
+				stmt.close();
+				con.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void updateReader(Reader reader) {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try{
+			con=getConnection();
+			con.setAutoCommit(false);
+			stmt=con.prepareStatement("update reader set 姓名=?,院系=?,班级=?where 图书证号="+reader.get图书证号()+"");
+			stmt.setString(1,reader.get姓名());
+			stmt.setString(2,reader.get院系());
+			stmt.setString(3,reader.get班级());
+			stmt.execute();
+			con.commit();
+		}catch(Exception e){
+			try{
+				con.rollback();
+			}catch(SQLException sqlex){
+				sqlex.printStackTrace();
+			}
+		}finally{
+			try{
+				stmt.close();
+				con.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void updateBook(Book book) {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try{
+			con=getConnection();
+			con.setAutoCommit(false);
+			stmt=con.prepareStatement("update book set 书名=?,作者=?,出版社=?,入库时间=?where 书号="+book.get书号()+"");
+			stmt.setString(1,book.get书名());
+			stmt.setString(2,book.get作者());
+			stmt.setString(3,book.get出版社());
+			stmt.setString(4,book.get入库时间());
+			stmt.execute();
+			con.commit();
+		}catch(Exception e){
+			try{
+				con.rollback();
+			}catch(SQLException sqlex){
+				sqlex.printStackTrace();
+			}
+		}finally{
+			try{
+				stmt.close();
+				con.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void deleteReader(Reader reader) {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try{
+			con=getConnection();
+			con.setAutoCommit(false);
+			stmt=con.prepareStatement("delete from reader where 图书证号=?");
+			stmt.setString(1,reader.get图书证号());
 			stmt.execute();
 			con.commit();
 		}catch(Exception e){

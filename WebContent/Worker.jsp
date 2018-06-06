@@ -72,6 +72,7 @@ con1.close();
 				<tr><td width=120><b><center>图书证号</td>
 				<td width=120><b><center>留言内容</td>
 				<td width=120><b><center>时间</td>
+				<td width=120><b><center>回复</td>
 </tr>
 <%
 Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -83,6 +84,7 @@ while(rst2.next()){
 	out.println("<td><center>"+rst2.getString("图书证号")+"</center></td>");
 	out.println("<td><center>"+rst2.getString("content")+"</center></td>");
 	out.println("<td><center>"+rst2.getString("time")+"</center></td>");
+	out.println("<td><center>"+rst2.getString("回复")+"</center></td>");
 	out.println("</tr>");
 }
 rst2.close();
@@ -90,6 +92,21 @@ stmt2.close();
 con2.close();
 %>
 </table>
+
+<h1>回复区</h1>
+<form name="form8" action="AddReply" method="post">
+<table><h1>
+	<tr>
+		<td>请输入回复的读者：
+		<td bgcolor="blue"><input name="图书证号" type="text">
+	<tr>
+		<td>请输入回复内容：
+		<td bgcolor="blue"><input name="回复" type="text">
+	<tr>
+		</h1></table><br>
+<input type="submit" value="回复">
+</form>
+
 <h1>公告区</h1>
 <form name="form8" action="AddNotice" method="post">
 <table><h1>

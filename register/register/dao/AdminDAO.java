@@ -5,9 +5,10 @@ import register.model.Reader;
 import register.model.Book;
 public interface AdminDAO {
 	public void saveWorker(Worker worker);//添加工作人员
-	public void deleteWorker(String 工号);//删除工作人员信息
-	public void deleteReader(String 图书证号);//删除读者信息
+	public void deleteReader(Reader reader);//删除读者信息
 	public void saveBook(Book book);//图书入库
-	public void deleteBook(String 书号);//图书下架
+	public void deleteBook(Book book);//图书下架
+	public void updateBook(Book book);
+	public void updateReader(Reader reader);
 	public String validate(String 用户名,String 管理密码);
 }

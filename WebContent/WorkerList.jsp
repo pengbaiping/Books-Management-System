@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>图书列表</title>
+<title>工作人员列表</title>
 </head>
 <body>
 <center><b>员工信息浏览<hr>

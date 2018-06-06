@@ -25,9 +25,13 @@
       <td><center><a href="DeleteBook.jsp">图书下架</td>
     </tr>
     <tr>
-      <td><center><a href="DeleteReader.jsp">删除读者</td>
-      <td><center><a href="ChangeReader.jsp">修改信息</td>
+      <td><center><a href="DeleteWorker.jsp">删除工作人员</td>
+      <td><center><a href="ChangeReader.jsp">修改读者信息</td>
+      <td><center><a href="ChangeBook.jsp">修改图书信息</td>
       
+    </tr>
+    <tr>
+    <td><center><a href="DeleteReader.jsp">删除读者</td>
     </tr>
   </tbody>
 </table>

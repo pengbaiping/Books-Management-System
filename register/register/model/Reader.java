@@ -9,6 +9,7 @@ public class Reader {
 	private String 角色;
 	private String content;
 	private String time;
+	private String Reply;
 	public String get图书证号() {
 		return 图书证号;
 	}
@@ -56,6 +57,12 @@ public class Reader {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public String getReply() {
+		return Reply;
+	}
+	public void setReply(String reply) {
+		Reply = reply;
 	}
 	public String toString() {
 		return "图书证号："+get图书证号()+"<br>登录密码"+get登录密码()+"<br>姓名"+get姓名()+"<br>院系"+get院系()+"<br>班级"+get班级()+"<br>角色"+get角色();
