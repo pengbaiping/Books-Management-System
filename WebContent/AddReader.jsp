@@ -13,7 +13,7 @@
 		<td bgcolor="blue"><input name="图书证号" type="text">
 	<tr>
 		<td>请输入登录密码：
-		<td bgcolor="blue"><input name="登录密码" type="ext">
+		<td bgcolor="blue"><input name="登录密码" type="password">
 	<tr>
 		<td>请输入姓名：
 		<td bgcolor="blue"><input name="姓名" type="text">

@@ -4,6 +4,8 @@ public class Worker {
 	private String 工号;
 	private String 密码;
 	private String 角色;
+	private String notices;
+	private String createtime;
 	public String get工号() {
 		return 工号;
 	}
@@ -21,6 +23,18 @@ public class Worker {
 	}
 	public void set角色(String 角色) {
 		this.角色 = 角色;
+	}
+	public String getNotices() {
+		return notices;
+	}
+	public void setNotices(String notices) {
+		this.notices = notices;
+	}
+	public String getCreatetime() {
+		return createtime;
+	}
+	public void setCreatetime(String createtime) {
+		this.createtime = createtime;
 	}
 	public String toString() {
 		return "工号："+get工号()+"<br>密码"+get密码()+"<br>角色"+get角色();

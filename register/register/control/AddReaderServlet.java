@@ -23,7 +23,7 @@ public class AddReaderServlet extends HttpServlet{
 		reader.set½ÇÉ«("¶ÁÕß");
 		readerDAO.saveReader(reader);
 		RequestDispatcher requestDispatcher = request
-				.getRequestDispatcher("Admin.jsp");
+				.getRequestDispatcher("Reader.jsp");
 		requestDispatcher.forward(request, response);
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)

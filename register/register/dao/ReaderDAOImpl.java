@@ -30,10 +30,8 @@ public class ReaderDAOImpl implements ReaderDAO{
 		try{
 			con=getConnection();
 			con.setAutoCommit(false);
-			stmt=con.prepareStatement("update reader set 登录密码=?,院系=?,班级=? where 图书证号="+reader.get图书证号()+"");
+			stmt=con.prepareStatement("update reader set 登录密码=?where 图书证号="+reader.get图书证号()+"");
 			stmt.setString(1,reader.get登录密码());
-			stmt.setString(2,reader.get院系());
-			stmt.setString(3,reader.get班级());
 			stmt.execute();
 			con.commit();
 		}catch(Exception e){
@@ -85,6 +83,34 @@ public class ReaderDAOImpl implements ReaderDAO{
 			stmt.setString(4,reader.get院系());
 			stmt.setString(5,reader.get班级());
 			stmt.setString(6,"读者");
+			stmt.execute();
+			con.commit();
+		}catch(Exception e){
+			try{
+				con.rollback();
+			}catch(SQLException sqlex){
+				sqlex.printStackTrace();
+			}
+		}finally{
+			try{
+				stmt.close();
+				con.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void saveMessage(Reader reader) {
+		Connection con=null;
+		PreparedStatement stmt=null;
+		try{
+			con=getConnection();
+			con.setAutoCommit(false);
+			stmt=con.prepareStatement("insert into message(图书证号,content,time)values(?,?,CURRENT_TIMESTAMP)");
+			stmt.setString(1,reader.get图书证号());
+			stmt.setString(2,reader.getContent());
 			stmt.execute();
 			con.commit();
 		}catch(Exception e){

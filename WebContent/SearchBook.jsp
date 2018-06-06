@@ -33,7 +33,7 @@ String 字段名=request.getParameter("字段名");
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection con=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/bms","root","1505010604");
 Statement stmt=con.createStatement();
-ResultSet rst=stmt.executeQuery("select * from book where "+字段名+"="+条件+"");
+ResultSet rst=stmt.executeQuery("select * from book where "+字段名+"='"+条件+"'");
 while(rst.next()){
 	out.println("<tr>");
 	out.println("<td><center>"+rst.getString("书号")+"</center></td>");
@@ -41,7 +41,7 @@ while(rst.next()){
 	out.println("<td><center>"+rst.getString("作者")+"</center></td>");
 	out.println("<td><center>"+rst.getString("出版社")+"</center></td>");
 	out.println("<td><center>"+rst.getString("入库时间")+"</center></td>");
-	out.println("<td><center>"+rst.getString("是否借出")+"</center></td>");
+	out.println("<td><center>"+rst.getString("是否借出")+"</td>");
 	out.println("</tr>");
 }
 rst.close();

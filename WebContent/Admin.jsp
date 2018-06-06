@@ -22,10 +22,11 @@
     <tr>
       <td><center><a href="AddWorker.jsp">添加员工</td>
       <td><center><a href="SearchReader.jsp">查询读者信息</td>
-      
+      <td><center><a href="DeleteBook.jsp">图书下架</td>
     </tr>
     <tr>
-      <td><center><a href="SearchWorker.jsp">查询员工信息</td>
+      <td><center><a href="DeleteReader.jsp">删除读者</td>
+      <td><center><a href="ChangeReader.jsp">修改信息</td>
       
     </tr>
   </tbody>

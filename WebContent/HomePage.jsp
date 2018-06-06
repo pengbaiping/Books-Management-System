@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html;charset=utf-8" %>
+<%@ page import="java.sql.*,java.io.*" %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -6,8 +7,29 @@
 </head>
 <body>
 	<h1><marquee>欢迎使用本系统</marquee></h1>
-	<h2><center>公告</center></h2>
-	<h4><center><font color="blue">${noticeBean}</font></center></h4>
+	<center><b><h2>公告浏览</h2><hr>
+		<table border=3>
+			<tr><td><b><center>工号</td>
+				<td><b><center>公告内容</td>
+				<td><b><center>时间</td>
+			</tr>
+		<%
+		    Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection con=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/bms","root","1505010604");
+			Statement stmt=con.createStatement();
+			ResultSet rst=stmt.executeQuery("select * from notice;");
+			while(rst.next()){
+				out.println("<tr>");
+				out.println("<td>"+rst.getString("工号")+"</td>");
+				out.println("<td>"+rst.getString("notices")+"</td>");
+				out.println("<td>"+rst.getString("createtime")+"</td>");
+				out.println("</tr>");
+			}
+				rst.close();
+				stmt.close();
+				con.close();
+%>
+</table>
 	<b><center>______________________________________________________________________________________________________</center></b>
 	<p><a href="BookList.jsp"><center>图书列表</center></a></p>
 	<p><a href="SearchBook.jsp"><center>查询图书</center></a></p>
