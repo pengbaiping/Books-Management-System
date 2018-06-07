@@ -2,7 +2,6 @@
 <%@ page import="java.sql.*,java.io.*" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>欢迎使用本系统</title>
 </head>
 <body>
@@ -26,6 +25,17 @@
 				<td width=120><b><center>状态</td>
 </tr>
 <%
+		request.setCharacterEncoding("utf-8");
+		String exportToExcel = request.getParameter("exportToExcel");
+		if (exportToExcel != null
+				&& exportToExcel.toString().equalsIgnoreCase("YES")) {
+			response.setContentType("application/vnd.ms-excel");
+			response.setHeader("Content-Disposition", "inline; filename="
+					+ "excel.xls");
+
+		}
+	%>
+<%
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection con=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/bms","root","1505010604");
 Statement stmt=con.createStatement();
@@ -43,7 +53,13 @@ rst.close();
 stmt.close();
 con.close();
 %>
-</table>
+</table><%
+		if (exportToExcel == null) {
+	%>
+	<a href="Worker.jsp?exportToExcel=YES">Export to Excel</a>
+	<%
+		}
+	%>
 <h1>还书情况</h1>
 <table border=3>
 				<tr><td width=120><b><center>图书证号</td>
