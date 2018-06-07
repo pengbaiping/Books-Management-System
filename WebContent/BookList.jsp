@@ -15,6 +15,17 @@
 				<td><b><center>入库时间</td>
 				<td><b><center>是否借出</td>
 			</tr>
+			<%
+		request.setCharacterEncoding("utf-8");
+		String exportToExcel = request.getParameter("exportToExcel");
+		if (exportToExcel != null
+				&& exportToExcel.toString().equalsIgnoreCase("YES")) {
+			response.setContentType("application/vnd.ms-excel");
+			response.setHeader("Content-Disposition", "inline; filename="
+					+ "BookList.xls");
+
+		}
+	%>
 		<%
 		   Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection con=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/bms","root","1505010604");
@@ -35,6 +46,13 @@ stmt.close();
 con.close();
 %>
 </table>
+<%
+		if (exportToExcel == null) {
+	%>
+	<a href="BookList.jsp?exportToExcel=YES"><h1>Export to Excel</h1></a>
+	<%
+		}
+	%>
 <p><a href="HomePage.jsp">回到首页</a></p>
 </body>
 </html>
